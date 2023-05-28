@@ -28,6 +28,5 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -t $ECR_REGISTRY/yoiw-app-router-cache-control:latest .
-          docker tag yoiw-app-router-cache-control:latest public.ecr.aws/d1t4a0v7/yoiw-app-router-cache-control:latest
+          docker build -t public.ecr.aws/d1t4a0v7/yoiw-app-router-cache-control:latest .
           docker push public.ecr.aws/d1t4a0v7/yoiw-app-router-cache-control:latest
