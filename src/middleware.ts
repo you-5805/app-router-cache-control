@@ -17,7 +17,7 @@ const middlewareFn = (async (req) => {
     `http://127.0.0.1:3000/api/posts/${postId}`,
   ).then((r) => r.json());
 
-  if (post.shareType === 'public') {
+  if (post.visibility === 'public') {
     res.headers.set('Surrogate-Control', 'public, max-age=30');
   } else {
     res.headers.set(

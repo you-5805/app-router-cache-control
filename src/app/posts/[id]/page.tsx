@@ -7,7 +7,9 @@ type Parameter = {
 };
 
 export default async function Page({ params: { id } }: Parameter) {
-  const post = await getPost(id);
+  const post = await getPost(id, {
+    cache: 'no-cache',
+  });
 
   return <h1>{post.title}</h1>;
 }

@@ -9,10 +9,10 @@ export const getServerSideProps = (async ({ res, params }) => {
   // fetch data
   const post = await getPost(id);
 
-  // set Cache-Control header depends on shareType
+  // set Cache-Control header depends on visibility
   res.setHeader(
     'Cache-Control',
-    post.shareType === 'users-only'
+    post.visibility === 'users-only'
       ? 'private, no-store, max-age=0, must-revalidate'
       : 'public, max-age=30',
   );
