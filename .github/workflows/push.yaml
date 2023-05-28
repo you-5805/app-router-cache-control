@@ -27,7 +27,7 @@ jobs:
       - name: Build and push
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPO_NAME }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker build -t $ECR_REGISTRY/yoiw-app-router-cache-control:latest .
+          docker tag yoiw-app-router-cache-control:latest public.ecr.aws/d1t4a0v7/yoiw-app-router-cache-control:latest
+          docker push public.ecr.aws/d1t4a0v7/yoiw-app-router-cache-control:latest
