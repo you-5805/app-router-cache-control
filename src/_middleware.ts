@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { Post } from './types/Post';
+import type { Post } from './data/posts';
 import type { NextMiddleware } from 'next/server';
 
 export const config = {
