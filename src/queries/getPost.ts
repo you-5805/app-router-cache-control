@@ -1,4 +1,4 @@
-import type { Post } from '@/types/Post';
+import type { Post } from '@/data/posts';
 
 export const getPost = async (id: string) => {
   const res: { post: Post } = await fetch(

@@ -2,26 +2,26 @@ import { getPost } from '@/queries/getPost';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 export const getServerSideProps = (async ({ res, params }) => {
+  // get path parameter
   const id = params?.id;
   if (typeof id !== 'string') return { notFound: true };
 
+  // fetch data
   const post = await getPost(id);
 
-  const cacheControl =
+  // set Cache-Control header depends on shareType
+  res.setHeader(
+    'Cache-Control',
     post.shareType === 'users-only'
       ? 'private, no-store, max-age=0, must-revalidate'
-      : 'public, max-age=30';
-  res.setHeader('Cache-Control', cacheControl);
+      : 'public, max-age=30',
+  );
 
-  return {
-    props: {
-      post,
-    },
-  };
+  return { props: { post } };
 }) satisfies GetServerSideProps;
 
-export default function Page({
-  post,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+
+export default function Page({ post }: PageProps) {
   return <h1>{post.title}</h1>;
 }
