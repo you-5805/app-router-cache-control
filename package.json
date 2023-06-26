@@ -14,7 +14,7 @@
     "sb:build": "storybook build"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.3.1",
+    "@t3-oss/env-nextjs": "^0.6.0",
     "classnames": "^2.3.2",
     "next": "^13.4.4",
     "react": "^18.2.0",
